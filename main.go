@@ -1,3 +1,4 @@
+//This is a simple otel log generator
 package main
 
 import (
