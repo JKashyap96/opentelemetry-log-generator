@@ -156,7 +156,7 @@ func generateLog(i int, phase string, logger log.Logger) {
 		log.String("phase", phase),
 		log.String("http.target", fmt.Sprintf("/api/v1/resource/%d", i)),
 		log.String("k8s.namespace.name", "default"),
-		log.String("k8s.container.name", "dds-logs-generator"),
+		log.String("k8s.container.name", opentelemetry-logs-generator"),
 	}
 	record.AddAttributes(attrs...)
 	logger.Emit(context.Background(), record)
@@ -229,7 +229,7 @@ func main() {
 		logsdk.WithProcessor(batchProcessor),
 		logsdk.WithResource(res),
 	)
-	logger := loggerProvider.Logger("dds-logger")
+	logger := loggerProvider.Logger("opentelemetry-logger")
 
 	// Create a channel to listen for termination signals (SIGINT, SIGTERM)
 	signalChan := make(chan os.Signal, 1)
